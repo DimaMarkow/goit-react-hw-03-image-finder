@@ -1,10 +1,9 @@
 import ImageFinder from 'components/ImageFinder/ImageFinder';
-import css from 'components/ImageFinder/imagefinder.module.css';
+// import css from 'components/ImageFinder/imagefinder.module.css';
 
 export const App = () => {
   return (
     <div
-      className={css.app}
       style={{
         width: '100vw',
         height: '100vh',
