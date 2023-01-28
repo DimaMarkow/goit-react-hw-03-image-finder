@@ -1,10 +1,8 @@
 import React from 'react';
-// import axios from 'axios';
-// import css from 'components/ImageFinder/imagefinder.module.css';
+import Modal from 'shared/Modal/Modal';
 import ImageGalleryItem from 'components/ImageFinder/ImageGalleryItem/ImageGalleryItem';
 import Loader from 'components/ImageFinder/Loader/Loader';
 import Button from 'components/ImageFinder/Button/Button';
-
 import { searchPosts } from 'shared/services/posts-api';
 
 class ImageGallery extends React.Component {
@@ -13,6 +11,8 @@ class ImageGallery extends React.Component {
     loading: false,
     error: null,
     page: 1,
+    imageDetail: '',
+    showModal: false,
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -39,18 +39,35 @@ class ImageGallery extends React.Component {
 
   loadMore = () => {
     this.setState(({ page }) => ({ page: page + 1 }));
-    console.log('Выполнилась функция');
+  };
+
+  showImage = ({ largeImageURL }) => {
+    this.setState({
+      imageDetail: largeImageURL,
+      showModal: true,
+    });
+  };
+
+  closeModal = () => {
+    this.setState({
+      imageDetail: null,
+      showModal: false,
+    });
   };
 
   render() {
-    const { images, loading, error } = this.state;
-    // console.log(images);
+    const { images, loading, error, showModal, imageDetail } = this.state;
     return (
       <>
         {error && <h2>{error.message}</h2>}
         {loading && <Loader />}
-        {images.length > 0 && <ImageGalleryItem items={images} />}
+        {images.length > 0 && (
+          <ImageGalleryItem items={images} showImage={this.showImage} />
+        )}
         {Boolean(images.length) && <Button onLoadMore={this.loadMore} />}
+        {showModal && (
+          <Modal imageDetail={imageDetail} closeModal={this.closeModal} />
+        )}
       </>
     );
   }
