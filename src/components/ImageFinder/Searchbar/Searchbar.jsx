@@ -14,9 +14,9 @@ class Searchbar extends React.Component {
     this.setState({ imageName: value });
   };
 
-  resetForm = () => {
-    this.setState({ imageName: '' });
-  };
+  // resetForm = () => {
+  //   this.setState({ imageName: '' });
+  // };
 
   handleSubmit = e => {
     e.preventDefault();
@@ -29,7 +29,7 @@ class Searchbar extends React.Component {
       return;
     }
     this.props.onSubmit(this.state.imageName);
-    this.resetForm();
+    // this.resetForm();
   };
 
   render() {

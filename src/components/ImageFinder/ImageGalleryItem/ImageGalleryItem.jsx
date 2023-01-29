@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import css from 'components/ImageFinder/imagefinder.module.css';
 
 export default function ImageGalleryItem({ items, showImage }) {
@@ -20,3 +22,15 @@ export default function ImageGalleryItem({ items, showImage }) {
     </ul>
   );
 }
+
+ImageGalleryItem.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      webformatURL: PropTypes.string.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
+    })
+  ),
+  showImage: PropTypes.func.isRequired,
+};
