@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import css from 'components/ImageFinder/imagefinder.module.css';
 import { ImSearch } from 'react-icons/im';
 import { toast } from 'react-toastify';
@@ -56,3 +57,7 @@ class Searchbar extends React.Component {
 }
 
 export default Searchbar;
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

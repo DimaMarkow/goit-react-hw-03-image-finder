@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Modal from 'shared/Modal/Modal';
 import ImageGalleryItem from 'components/ImageFinder/ImageGalleryItem/ImageGalleryItem';
 import Loader from 'components/ImageFinder/Loader/Loader';
@@ -74,3 +76,7 @@ class ImageGallery extends React.Component {
 }
 
 export default ImageGallery;
+
+ImageGallery.propTypes = {
+  filter: PropTypes.string.isRequired,
+};

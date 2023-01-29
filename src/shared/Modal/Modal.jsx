@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import css from 'components/ImageFinder/imagefinder.module.css';
 
@@ -32,3 +33,8 @@ class Modal extends React.Component {
 }
 
 export default Modal;
+
+Modal.propTypes = {
+  imageDetail: PropTypes.string.isRequired,
+  closeModal: PropTypes.func.isRequired,
+};
